@@ -1,18 +1,18 @@
-import Header from "components/views/Header";
-import AppRouter from "components/routing/routers/AppRouter";
+import { ChakraProvider } from '@chakra-ui/react'
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import Navigation from './pages/Navigation'
+import { theme } from './Theme.'
 
-/**
- * Happy coding!
- * React Template by Lucas Pelloni
- * Overhauled by Kyrill Hux
- */
-const App = () => {
+export default function App() {
+
   return (
-    <div>
-      <Header height="100"/>
-      <AppRouter/>
-    </div>
-  );
-};
-
-export default App;
+    <React.StrictMode>
+      <ChakraProvider theme={theme}>
+        <BrowserRouter>
+          <Navigation />
+        </BrowserRouter>
+      </ChakraProvider>
+    </React.StrictMode>
+  )
+}
