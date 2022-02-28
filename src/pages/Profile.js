@@ -30,15 +30,15 @@ export default function Profile() {
   }
   const onReset = (values, actions) => {
     setReadOnly(true)
-    actions.setValues(initialValues())
+    actions.setValues(initialValues)
   }
 
-  const initialValues = () => ({ username: loggedUser.username, birthday: loggedUser.birthday })
+  const initialValues = { username: loggedUser.username, birthday: loggedUser.birthday }
   const validationSchema = object({ username: usernameSchema(onValidateUsername) })
 
   return (
     <MotionBoxDraw h='50%' w='50%' p={4}>
-      <Formik initialValues={initialValues()} onSubmit={onSubmit} onReset={onReset} validationSchema={validationSchema}>
+      <Formik enableReinitialize initialValues={initialValues} onSubmit={onSubmit} onReset={onReset} validationSchema={validationSchema}>
         {(formProps) =>
           <VStack as={Form} h='80%' justify='space-between'>
             <Heading>my profile</Heading>
