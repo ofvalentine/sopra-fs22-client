@@ -2,5 +2,10 @@
   "root": "build/",
   "routes": {
     "/**": "index.html"
+  },
+  "proxies": {
+    "/": {
+      "origin": "https://sopra-fs22-valentineh-server.herokuapp.com"
+    }
   }
 }
