@@ -30,7 +30,7 @@ export default function Profile() {
   }
   const onReset = (values, actions) => {
     setReadOnly(true)
-    actions.resetForm({ values: initialValues })
+    actions.setValues(initialValues)
   }
 
   const initialValues = { username: loggedUser.username, birthday: loggedUser.birthday }
