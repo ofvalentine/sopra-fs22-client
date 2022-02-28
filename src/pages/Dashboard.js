@@ -1,16 +1,14 @@
 import { Divider, Heading, Spinner } from '@chakra-ui/react'
 import React from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import { useFetch } from 'use-http'
 import { MotionBoxDraw, MotionButton } from '../components/Animations'
 
 export default function Dashboard() {
-  const { loggedUser, setLoggedUser } = useOutletContext()
-  const { put } = useFetch(`/users/${loggedUser.id}`)
+  const { loggedUser, setLoggedUser, put } = useOutletContext()
   const navigate = useNavigate()
 
   const logout = async () => {
-    await put({ ...loggedUser, loggedIn: false })
+    await put(`/${loggedUser.id}`, { ...loggedUser, loggedIn: false })
     await setLoggedUser(undefined)
     navigate('/')
     return <Spinner />

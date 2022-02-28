@@ -16,11 +16,11 @@ import {
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
-import { useFetch } from 'use-http'
+import { CachePolicies, useFetch } from 'use-http'
 import { MotionBoxDraw, MotionButton, MotionWrap } from '../components/Animations'
 
 export default function Overviewer() {
-  const users = useFetch('/users', { data: [], cachePolicy: 'no-cache' }, []).data
+  const users = useFetch('/users', { data: [], cachePolicy: CachePolicies.NO_CACHE }, []).data
   const { loggedUser } = useOutletContext()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navigate = useNavigate()

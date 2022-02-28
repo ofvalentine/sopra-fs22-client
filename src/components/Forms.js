@@ -5,7 +5,6 @@ import React from 'react'
 import { DatePicker } from 'react-rainbow-components'
 import { useOutletContext } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { useFetch } from 'use-http'
 import { object, string } from 'yup'
 
 export function InputField(props) {
@@ -37,8 +36,7 @@ export function DateField(props) {
 }
 
 export function BasicForm(props) {
-  const { get, put, response } = useFetch({ cachePolicy: 'no-cache' })
-  const { loggedUser, setLoggedUser } = useOutletContext()
+  const { loggedUser, setLoggedUser, get, put, response } = useOutletContext()
   const initialValues = { username: loggedUser?.username || '', password: '', birthday: loggedUser?.birthday }
   const validationSchema = object({
     password: props.withPassword && string().required(),
