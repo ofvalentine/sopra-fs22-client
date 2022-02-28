@@ -28,13 +28,17 @@ export default function Profile() {
         { position: 'top-center', theme: 'colored' })
     }
   }
+  const onReset = (values, actions) => {
+    setReadOnly(true)
+    actions.resetForm({ values: initialValues })
+  }
 
   const initialValues = { username: loggedUser.username, birthday: loggedUser.birthday }
   const validationSchema = object({ username: usernameSchema(onValidateUsername) })
 
   return (
     <MotionBoxDraw h='50%' w='50%' p={4}>
-      <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+      <Formik initialValues={initialValues} onSubmit={onSubmit} onReset={onReset} validationSchema={validationSchema}>
         {(formProps) =>
           <VStack as={Form} h='80%' justify='space-between'>
             <Heading>my profile</Heading>
@@ -42,7 +46,7 @@ export default function Profile() {
               ? <MotionButton rightIcon={<EditIcon/>} onClick={() => setReadOnly(false)}>edit</MotionButton>
               : <ButtonGroup justifyContent='center'>
                   <MotionButton glow='green' rightIcon={<CheckIcon/>} type='submit'>save</MotionButton>
-                  <MotionButton glow='orange' rightIcon={<CloseIcon/>} type='reset' onClick={() => setReadOnly(true)} />
+                  <MotionButton glow='orange' rightIcon={<CloseIcon/>} type='reset'>discard</MotionButton>
                 </ButtonGroup>)}
             <InputField name='username' type='text' readOnly={readOnly} />
             <DateField name='birthday' readOnly={readOnly} value={formProps.values.birthday}
