@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify'
 import useLocalStorage from 'use-local-storage'
 
 export default function Layout(props) {
-  const [loggedUser, setLoggedUser] = useLocalStorage('loggedUser', undefined)
+  const [loggedUser, setLoggedUser] = useLocalStorage('loggedUser', {})
 
   if (props.restricted !== loggedUser?.loggedIn)
     return <Navigate to={props.redirect} />

@@ -3,9 +3,9 @@
  */
 class User {
   constructor(data = {}) {
-    this.id = null;
-    this.username = null;
-    this.loggedIn = null;
+    this.username = '';
+    this.password = '';
+    this.birthday = undefined;
     Object.assign(this, data);
   }
 }

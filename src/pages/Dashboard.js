@@ -5,8 +5,8 @@ import { CachePolicies, useFetch } from 'use-http'
 import { MotionBoxDraw, MotionButton } from '../components/Animations'
 
 export default function Dashboard() {
-  const { put } = useFetch({ cache: CachePolicies.NO_CACHE })
   const { loggedUser, setLoggedUser } = useOutletContext()
+  const { put } = useFetch({ cachePolicy: CachePolicies.NO_CACHE })
   const navigate = useNavigate()
 
   const logout = async () => {
