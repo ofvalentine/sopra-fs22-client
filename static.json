@@ -5,7 +5,7 @@
   },
   "proxies": {
     "/users": {
-      "origin": "https://sopra-fs22-valentineh-server.herokuapp.com"
+      "origin": "https://sopra-fs22-valentineh-server.herokuapp.com/users"
     }
   }
 }
