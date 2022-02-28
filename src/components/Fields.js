@@ -28,7 +28,7 @@ export function DateField(props) {
     <Field name={props.name} children={fieldProps =>
       <FormControl isInvalid={fieldProps.meta.touched && !!fieldProps.meta.error}>
         <FormLabel>{props.name}</FormLabel>
-        <Box as={DatePicker} w='25vw' maxDate={new Date()} placeholder='Select date...' {...props} />
+        <Box as={DatePicker} w='25vw' locale='utc' maxDate={new Date()} placeholder='Select date...' {...props} />
       </FormControl>} />
   )
 }
