@@ -50,7 +50,7 @@ export default function Profile() {
                 </ButtonGroup>)}
             <InputField name='username' type='text' readOnly={readOnly} />
             <DateField name='birthday' readOnly={readOnly} value={formProps.values.birthday}
-                     onChange={selectedDate => formProps.setFieldValue('birthday', selectedDate)} />
+                     onChange={date => formProps.setFieldValue('birthday', Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))} />
           </VStack>}
       </Formik>
     </MotionBoxDraw>
