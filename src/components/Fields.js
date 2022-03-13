@@ -33,7 +33,8 @@ export function DateField(props) {
   )
 }
 
-const usernameSchema = (onValidateUsername) => string().required().max(15, 'username is too long').test('is-available',
-  (context) => `username ${context.originalValue} is not available`, onValidateUsername)
+const usernameSchema = (onValidateUsername) =>
+  string().ensure().required().trim().min(3, 'username is too short').max(15, 'username is too long')
+          .test('is-available', (context) => `username ${context.originalValue} is not available`, onValidateUsername)
 
 export { usernameSchema }
